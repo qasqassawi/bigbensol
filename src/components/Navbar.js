@@ -10,8 +10,7 @@ export function Navbar() {
     <nav class="navbar" id="navbar">
       <div class="container navbar-inner">
         <a href="/" class="navbar-logo">
-          <div class="navbar-logo-icon">B</div>
-          <span class="navbar-logo-text">bigbensul</span>
+          <img src="/src/assets/logo.jpg" alt="BigBenSul Logo" class="navbar-logo-img">
         </a>
         
         <ul class="navbar-nav" id="navbar-nav">
