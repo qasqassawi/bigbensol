@@ -12,7 +12,7 @@ export function Footer() {
         <div class="footer-grid">
           <div class="footer-brand">
             <div class="footer-logo">
-              <img src="/src/assets/logo.jpg" alt="BigBenSul Logo" class="footer-logo-img">
+              <img src="/logo.jpg" alt="BigBenSul Logo" class="footer-logo-img">
             </div>
             <p class="footer-description">
               ${t('footer.description')}

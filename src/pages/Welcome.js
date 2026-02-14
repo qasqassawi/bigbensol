@@ -12,7 +12,7 @@ export function WelcomePage() {
       
       <div class="welcome-content">
         <div class="welcome-logo-container">
-          <img src="/src/assets/logo.jpg" alt="BigBenSul Logo" class="welcome-logo-img reveal">
+          <img src="/logo.jpg" alt="BigBenSul Logo" class="welcome-logo-img reveal">
         </div>
         
         <h1 class="welcome-title reveal">
