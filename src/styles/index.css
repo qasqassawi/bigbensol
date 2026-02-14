@@ -778,8 +778,8 @@ a:hover {
 }
 
 .welcome-logo-img {
-  width: 160px;
-  height: 160px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 40px var(--color-primary-glow);
@@ -828,14 +828,14 @@ a:hover {
 
 /* Logo Styles */
 .navbar-logo-img {
-  height: 50px;
+  height: 75px;
   width: auto;
   object-fit: contain;
   border-radius: var(--radius-md);
 }
 
 .footer-logo-img {
-  height: 60px;
+  height: 85px;
   width: auto;
   object-fit: contain;
   margin-bottom: var(--space-4);
