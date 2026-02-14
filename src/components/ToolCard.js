@@ -1,6 +1,10 @@
 // ToolCard Component for bigbensul
+import { getCurrentLanguage } from '../main.js';
+import { getTranslation } from '../data/translations.js';
 
 export function ToolCard(tool, options = {}) {
+  const lang = getCurrentLanguage();
+  const t = (key) => getTranslation(key, lang);
   const { compact = false } = options;
 
   const ratingStars = '★'.repeat(Math.floor(tool.rating)) + (tool.rating % 1 >= 0.5 ? '½' : '');
@@ -12,7 +16,7 @@ export function ToolCard(tool, options = {}) {
         <div class="tool-info">
           <h3 class="tool-name">
             ${tool.name}
-            ${tool.editorPick ? '<span class="badge badge-primary">Editor\'s Pick</span>' : ''}
+            ${tool.editorPick ? `<span class="badge badge-primary">${t('common.editorsPick')}</span>` : ''}
           </h3>
           <div class="tool-rating">
             <span>${ratingStars}</span>
@@ -32,9 +36,9 @@ export function ToolCard(tool, options = {}) {
       
       <div class="tool-card-footer">
         <div class="tool-pricing">
-          ${tool.pricing.free ? '<strong>Free</strong> plan available' : `From <strong>${tool.pricing.plans[0].price}</strong>`}
+          ${tool.pricing.free ? `<strong>${t('common.free')}</strong> ${t('common.planAvailable')}` : `${t('common.from')} <strong>${tool.pricing.plans[0].price}</strong>`}
         </div>
-        <a href="/tool/${tool.id}" class="tool-cta">Learn More</a>
+        <a href="/tool/${tool.id}" class="tool-cta">${t('common.learnMore')}</a>
       </div>
     </article>
   `;
@@ -61,10 +65,13 @@ export function ToolCardSkeleton() {
 }
 
 export function ToolsGrid(tools) {
+  const lang = getCurrentLanguage();
+  const t = (key) => getTranslation(key, lang);
+
   if (!tools || tools.length === 0) {
     return `
       <div class="tools-empty">
-        <p>No tools found matching your criteria.</p>
+        <p>${t('common.noResults')}</p>
       </div>
     `;
   }

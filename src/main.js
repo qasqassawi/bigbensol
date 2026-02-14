@@ -89,23 +89,28 @@ router.addRoute('/deals', () => render(DealsPage()));
 router.addRoute('/categories', () => render(CategoriesPage()));
 router.addRoute('/about', () => render(AboutPage()));
 router.addRoute('/reviews', () => render(ExplorePage())); // Reviews redirects to explore
-router.addRoute('/submit', () => render(`
-  <div class="container" style="padding-top: calc(80px + var(--space-16)); text-align: center;">
-    <h1 class="section-title">Submit a Tool</h1>
-    <p style="color: var(--text-secondary); margin-bottom: var(--space-8);">
-      Know a great tool we should feature? Let us know!
-    </p>
-    <div class="tool-detail-section" style="max-width: 500px; margin: 0 auto;">
-      <form id="submit-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
-        <input type="text" class="input" placeholder="Tool Name" required>
-        <input type="url" class="input" placeholder="Tool Website" required>
-        <textarea class="input" placeholder="Why should we feature this tool?" rows="4" required style="resize: vertical;"></textarea>
-        <input type="email" class="input" placeholder="Your Email (optional)">
-        <button type="submit" class="btn btn-primary btn-lg">Submit Tool</button>
-      </form>
+router.addRoute('/submit', () => {
+  const lang = getCurrentLanguage();
+  const t = (key) => getTranslation(key, lang);
+
+  render(`
+    <div class="container" style="padding-top: calc(80px + var(--space-16)); text-align: center;">
+      <h1 class="section-title">${t('submit.title')}</h1>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-8);">
+        ${t('submit.description')}
+      </p>
+      <div class="tool-detail-section" style="max-width: 500px; margin: 0 auto;">
+        <form id="submit-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <input type="text" class="input" placeholder="${t('submit.namePlaceholder')}" required>
+          <input type="url" class="input" placeholder="${t('submit.urlPlaceholder')}" required>
+          <textarea class="input" placeholder="${t('submit.descPlaceholder')}" rows="4" required style="resize: vertical;"></textarea>
+          <input type="email" class="input" placeholder="${t('submit.emailPlaceholder')}">
+          <button type="submit" class="btn btn-primary btn-lg">${t('submit.submitBtn')}</button>
+        </form>
+      </div>
     </div>
-  </div>
-`));
+  `);
+});
 
 // Handle initial route
 router.handleRoute();

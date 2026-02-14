@@ -1,53 +1,53 @@
 // About Page for bigbensul
+import { getCurrentLanguage } from '../main.js';
+import { getTranslation } from '../data/translations.js';
 
 export function AboutPage() {
+  const lang = getCurrentLanguage();
+  const t = (key) => getTranslation(key, lang);
+
   return `
     <div class="container" style="padding-top: calc(80px + var(--space-8)); max-width: 800px;">
       <div class="section-header" style="margin-bottom: var(--space-12);">
-        <h1 class="section-title">About <span class="text-gradient">bigbensul</span></h1>
-        <p class="section-subtitle">Your smart decision engine for digital tools.</p>
+        <h1 class="section-title">${t('about.titlePart1')} <span class="text-gradient">bigbensul</span></h1>
+        <p class="section-subtitle">${t('about.subtitle')}</p>
       </div>
       
       <div class="tool-detail-section" style="margin-bottom: var(--space-8);">
-        <h3>🎯 Our Mission</h3>
+        <h3>🎯 ${t('about.missionTitle')}</h3>
         <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">
-          We believe finding the right tool shouldn't be overwhelming. With thousands of SaaS products, 
-          AI tools, and digital services launching every month, it's harder than ever to know what's 
-          actually worth your time and money.
+          ${t('about.missionText1')}
         </p>
         <p style="color: var(--text-secondary); line-height: 1.8;">
-          bigbensul cuts through the noise. We help you discover the best tools based on what you actually 
-          want to accomplish — not just feature lists and marketing hype.
+          ${t('about.missionText2')}
         </p>
       </div>
       
       <div class="tool-detail-section" style="margin-bottom: var(--space-8);">
-        <h3>✨ What Makes Us Different</h3>
+        <h3>✨ ${t('about.diffTitle')}</h3>
         <ul style="color: var(--text-secondary); line-height: 2; padding-left: var(--space-6);">
-          <li><strong>Intent-first discovery</strong> — Browse by goals, not categories</li>
-          <li><strong>Honest reviews</strong> — We tell you who should NOT use a tool</li>
-          <li><strong>No rankings for sale</strong> — Featured tools are based on merit</li>
-          <li><strong>Real deals</strong> — Verified discounts and offers</li>
-          <li><strong>Transparency</strong> — We clearly disclose affiliate relationships</li>
+          <li><strong>${t('about.diffItem1').split(' — ')[0]}</strong> — ${t('about.diffItem1').split(' — ')[1]}</li>
+          <li><strong>${t('about.diffItem2').split(' — ')[0]}</strong> — ${t('about.diffItem2').split(' — ')[1]}</li>
+          <li><strong>${t('about.diffItem3').split(' — ')[0]}</strong> — ${t('about.diffItem3').split(' — ')[1]}</li>
+          <li><strong>${t('about.diffItem4').split(' — ')[0]}</strong> — ${t('about.diffItem4').split(' — ')[1]}</li>
+          <li><strong>${t('about.diffItem5').split(' — ')[0]}</strong> — ${t('about.diffItem5').split(' — ')[1]}</li>
         </ul>
       </div>
       
       <div class="tool-detail-section" style="margin-bottom: var(--space-8);">
-        <h3>💰 How We Make Money</h3>
+        <h3>💰 ${t('about.moneyTitle')}</h3>
         <p style="color: var(--text-secondary); line-height: 1.8;">
-          bigbensul is free to use. We earn commissions when you sign up for tools through our links. 
-          This doesn't affect our recommendations — we only feature tools we'd genuinely use ourselves. 
-          Every placement is based on quality, not payment.
+          ${t('about.moneyText')}
         </p>
       </div>
       
       <div class="tool-detail-section">
-        <h3>📧 Get in Touch</h3>
+        <h3>📧 ${t('about.contactTitle')}</h3>
         <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">
-          Have a question, suggestion, or want to submit a tool?
+          ${t('about.contactText')}
         </p>
-        <a href="mailto:hello@bigbensul.tools" class="btn btn-primary">Contact Us</a>
-        <a href="/submit" class="btn btn-secondary" style="margin-left: var(--space-3);">Submit a Tool</a>
+        <a href="mailto:hello@bigbensul.tools" class="btn btn-primary">${t('about.contactBtn')}</a>
+        <a href="/submit" class="btn btn-secondary" style="margin-left: var(--space-3);">${t('about.submitBtn')}</a>
       </div>
     </div>
   `;

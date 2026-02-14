@@ -1,42 +1,45 @@
-// Explore Page for Pickr
 import { FilterSidebar, initFilterSidebar } from '../components/FilterSidebar.js';
 import { ToolsGrid, ToolCardSkeleton } from '../components/ToolCard.js';
 import { tools, getToolsByCategory, getEditorPicks, searchTools, categories } from '../data/tools.js';
+import { getCurrentLanguage } from '../main.js';
+import { getTranslation } from '../data/translations.js';
 
 let currentFilters = {};
 
 export function ExplorePage() {
-    // Parse URL params
-    const params = new URLSearchParams(window.location.search);
-    const categoryId = params.get('category');
-    const searchQuery = params.get('q');
-    const filterType = params.get('filter');
+  const lang = getCurrentLanguage();
+  const t = (key) => getTranslation(key, lang);
 
-    // Initial tool list
-    let displayTools = [...tools];
-    let pageTitle = 'Explore All Tools';
+  // Parse URL params
+  const params = new URLSearchParams(window.location.search);
+  const categoryId = params.get('category');
+  const searchQuery = params.get('q');
+  const filterType = params.get('filter');
 
-    if (categoryId) {
-        displayTools = getToolsByCategory(categoryId);
-        const cat = categories.find(c => c.id === categoryId);
-        pageTitle = cat ? cat.name : 'Category';
-    }
+  // Initial tool list
+  let displayTools = [...tools];
+  let pageTitle = t('explore.title');
 
-    if (searchQuery) {
-        displayTools = searchTools(searchQuery);
-        pageTitle = `Results for "${searchQuery}"`;
-    }
+  if (categoryId) {
+    displayTools = getToolsByCategory(categoryId);
+    pageTitle = t(`categories.${categoryId}`);
+  }
 
-    if (filterType === 'editorPick') {
-        displayTools = getEditorPicks();
-        pageTitle = "Editor's Picks";
-    }
+  if (searchQuery) {
+    displayTools = searchTools(searchQuery);
+    pageTitle = `${t('explore.resultsFor')} "${searchQuery}"`;
+  }
 
-    return `
+  if (filterType === 'editorPick') {
+    displayTools = getEditorPicks();
+    pageTitle = t('explore.editorsPicks');
+  }
+
+  return `
     <div class="container" style="padding-top: calc(80px + var(--space-8));">
       <div class="section-header" style="margin-bottom: var(--space-8);">
         <h1 class="section-title">${pageTitle}</h1>
-        <p class="section-subtitle">${displayTools.length} tools found</p>
+        <p class="section-subtitle">${displayTools.length} ${t('explore.toolsFound')}</p>
       </div>
       
       <div class="explore-layout">
@@ -51,18 +54,18 @@ export function ExplorePage() {
 }
 
 export function initExplorePage() {
-    initFilterSidebar((filters) => {
-        currentFilters = filters;
-        updateResults(filters);
-    });
+  initFilterSidebar((filters) => {
+    currentFilters = filters;
+    updateResults(filters);
+  });
 }
 
 function updateResults(filters) {
-    const resultsContainer = document.getElementById('explore-results');
-    if (!resultsContainer) return;
+  const resultsContainer = document.getElementById('explore-results');
+  if (!resultsContainer) return;
 
-    // Show loading
-    resultsContainer.innerHTML = `
+  // Show loading
+  resultsContainer.innerHTML = `
     <div class="tools-grid">
       ${ToolCardSkeleton()}
       ${ToolCardSkeleton()}
@@ -70,36 +73,36 @@ function updateResults(filters) {
     </div>
   `;
 
-    // Simulate filtering delay
-    setTimeout(() => {
-        let filteredTools = [...tools];
+  // Simulate filtering delay
+  setTimeout(() => {
+    let filteredTools = [...tools];
 
-        // Apply category filter
-        if (filters.category?.length) {
-            filteredTools = filteredTools.filter(tool =>
-                filters.category.some(cat => tool.categories.includes(cat))
-            );
-        }
+    // Apply category filter
+    if (filters.category?.length) {
+      filteredTools = filteredTools.filter(tool =>
+        filters.category.some(cat => tool.categories.includes(cat))
+      );
+    }
 
-        // Apply pricing filter
-        if (filters.pricing?.length) {
-            filteredTools = filteredTools.filter(tool => {
-                if (filters.pricing.includes('free') && tool.pricing.free) return true;
-                if (filters.pricing.includes('freemium') && tool.pricing.type === 'freemium') return true;
-                if (filters.pricing.includes('paid') && !tool.pricing.free) return true;
-                return false;
-            });
-        }
+    // Apply pricing filter
+    if (filters.pricing?.length) {
+      filteredTools = filteredTools.filter(tool => {
+        if (filters.pricing.includes('free') && tool.pricing.free) return true;
+        if (filters.pricing.includes('freemium') && tool.pricing.type === 'freemium') return true;
+        if (filters.pricing.includes('paid') && !tool.pricing.free) return true;
+        return false;
+      });
+    }
 
-        // Apply features filter
-        if (filters.features?.length) {
-            filteredTools = filteredTools.filter(tool => {
-                if (filters.features.includes('hasDiscount') && tool.deal) return true;
-                if (filters.features.includes('forStudents') && tool.tags.some(t => t.includes('Student'))) return true;
-                return filters.features.length === 0;
-            });
-        }
+    // Apply features filter
+    if (filters.features?.length) {
+      filteredTools = filteredTools.filter(tool => {
+        if (filters.features.includes('hasDiscount') && tool.deal) return true;
+        if (filters.features.includes('forStudents') && tool.tags.some(t => t.includes('Student'))) return true;
+        return filters.features.length === 0;
+      });
+    }
 
-        resultsContainer.innerHTML = ToolsGrid(filteredTools);
-    }, 300);
+    resultsContainer.innerHTML = ToolsGrid(filteredTools);
+  }, 300);
 }
