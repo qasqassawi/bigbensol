@@ -13,7 +13,7 @@ export const translations = {
         hero: {
             title: "Find the right tool.",
             subtitle: "Skip the guesswork.",
-            description: "Search services, platforms, and tools based on what you want to do — with trusted picks and real deals.",
+            description: "Discover the best digital tools and deals with ease.",
             exploreBtn: "Explore Tools",
             picksBtn: "See Top Picks"
         },
@@ -65,7 +65,7 @@ export const translations = {
         hero: {
             title: "ابحث عن الأداة المناسبة.",
             subtitle: "تجنب التخمين.",
-            description: "ابحث عن الخدمات والمنصات والأدوات بناءً على ما تريد القيام به — مع اختيارات موثوقة وعروض حقيقية.",
+            description: "اكتشف أفضل الأدوات الرقمية والعروض بكل سهولة.",
             exploreBtn: "استكشف الأدوات",
             picksBtn: "اطلع على أفضل الاختيارات"
         },
