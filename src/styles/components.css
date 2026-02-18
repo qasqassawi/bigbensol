@@ -553,6 +553,19 @@
     object-fit: cover;
 }
 
+.tool-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.tool-detail-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .tool-info {
     flex: 1;
     min-width: 0;
