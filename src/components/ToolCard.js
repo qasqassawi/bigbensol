@@ -12,7 +12,12 @@ export function ToolCard(tool, options = {}) {
   return `
     <article class="tool-card" data-tool-id="${tool.id}">
       <div class="tool-card-header">
-        <div class="tool-logo">${tool.logo}</div>
+        <div class="tool-logo">
+          ${tool.logo.startsWith('/') || tool.logo.includes('.') ?
+      `<img src="${tool.logo}" alt="${tool.name}" class="tool-logo-img">` :
+      tool.logo
+    }
+        </div>
         <div class="tool-info">
           <h3 class="tool-name">
             ${tool.name}
