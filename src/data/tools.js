@@ -478,6 +478,44 @@ export const tools = [
         deal: { discount: '40% OFF Premium', code: 'BIGBENSUL40', expires: '2026-03-15' },
         featured: false,
         editorPick: false
+    },
+    {
+        id: 'logome',
+        name: 'Logome.ai',
+        tagline: 'AI-powered logo designer for unique branding',
+        description: 'Logome.ai uses artificial intelligence to generate professional and unique logos in seconds. Perfect for startups, side projects, and entrepreneurs who need a brand identity quickly.',
+        logo: '💎',
+        category: 'design',
+        categories: ['design'],
+        rating: 4.8,
+        reviewCount: 1240,
+        pricing: {
+            type: 'freemium',
+            free: true,
+            plans: [
+                { name: 'Free', price: '$0', features: ['AI logo generation', 'Low-res previews'] },
+                { name: 'Basic', price: '$29', features: ['High-res logo files', 'Commercial license'] },
+                { name: 'Professional', price: '$59', features: ['Full brand kit', 'Vector files', 'Social media assets'] }
+            ]
+        },
+        tags: ['AI-Powered', 'Logo Maker', 'Branding'],
+        bestFor: ['Startups', 'Entrepreneurs', 'Side projects', 'Quick branding'],
+        notFor: ['Complex manual illustration', 'Print-heavy agencies', 'Custom font design from scratch'],
+        pros: [
+            'Fast and efficient AI generation',
+            'Beautiful and unique logo options',
+            'Easy to use with no design skills',
+            'Affordable branding solutions'
+        ],
+        cons: [
+            'Limited manual control compared to AI/PS',
+            'Requires subscription for high-res exports',
+            'AI occasionally generates generic icons'
+        ],
+        affiliateUrl: 'http://bit.ly/4rmic7C',
+        deal: null,
+        featured: true,
+        editorPick: false
     }
 ];
 
