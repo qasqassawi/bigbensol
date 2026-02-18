@@ -484,7 +484,7 @@ export const tools = [
         name: 'Logome.ai',
         tagline: 'AI-powered logo designer for unique branding',
         description: 'Logome.ai uses artificial intelligence to generate professional and unique logos in seconds. Perfect for startups, side projects, and entrepreneurs who need a brand identity quickly.',
-        logo: '💎',
+        logo: '/logome-logo.svg',
         category: 'design',
         categories: ['design'],
         rating: 4.8,
