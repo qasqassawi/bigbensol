@@ -3,28 +3,33 @@ import { getToolById, tools } from '../data/tools.js';
 import { ToolCard } from '../components/ToolCard.js';
 
 export function ToolDetailPage(params) {
-    const tool = getToolById(params.id);
+  const tool = getToolById(params.id);
 
-    if (!tool) {
-        return `
+  if (!tool) {
+    return `
       <div class="container" style="padding-top: calc(80px + var(--space-16)); text-align: center;">
         <h1>Tool not found</h1>
         <p>The tool you're looking for doesn't exist.</p>
         <a href="/explore" class="btn btn-primary" style="margin-top: var(--space-6);">Browse All Tools</a>
       </div>
     `;
-    }
+  }
 
-    // Get alternatives (same category, different tool)
-    const alternatives = tools
-        .filter(t => t.id !== tool.id && t.categories.some(c => tool.categories.includes(c)))
-        .slice(0, 3);
+  // Get alternatives (same category, different tool)
+  const alternatives = tools
+    .filter(t => t.id !== tool.id && t.categories.some(c => tool.categories.includes(c)))
+    .slice(0, 3);
 
-    return `
+  return `
     <div class="tool-detail">
       <div class="container">
         <div class="tool-detail-header">
-          <div class="tool-detail-logo">${tool.logo}</div>
+          <div class="tool-detail-logo">
+            ${tool.logo.startsWith('/') || tool.logo.includes('.') ?
+      `<img src="${tool.logo}" alt="${tool.name}" class="tool-logo-img">` :
+      tool.logo
+    }
+          </div>
           <div class="tool-detail-info">
             <h1 class="tool-detail-name">
               ${tool.name}
@@ -132,12 +137,6 @@ export function ToolDetailPage(params) {
                 </a>
               </div>
             ` : ''}
-            
-            <!-- Affiliate Disclosure -->
-            <div class="affiliate-badge">
-              <span>ℹ️</span>
-              <span>This page may contain affiliate links. We only recommend tools we trust.</span>
-            </div>
             
             <!-- Rating -->
             <div class="pricing-card">
