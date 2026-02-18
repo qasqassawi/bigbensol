@@ -16,18 +16,18 @@ export function EmailCapture() {
 }
 
 export function initEmailCapture() {
-  const form = document.getElementById('email-form');
-
-  form?.addEventListener('submit', (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = form.querySelector('input').value;
 
-    // Simulate submission
-    form.innerHTML = `
-      <p style="font-size: 1.25rem;">✓ Thanks for subscribing!</p>
-      <p style="opacity: 0.8;">We'll send you the best tools every week.</p>
-    `;
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
 
-    console.log('Email captured:', email);
-  });
+    const data = await response.json();
+    console.log(data);
+  };
 }
