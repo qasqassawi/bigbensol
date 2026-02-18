@@ -111,8 +111,7 @@ export const translations = {
             getDeal: "Get Deal",
             details: "Details",
             noDeals: "No active deals right now. Check back soon!",
-            browseAll: "Browse All Tools",
-            disclaimer: "These deals may include affiliate links. We only feature products we genuinely recommend."
+            browseAll: "Browse All Tools"
         },
         about: {
             titlePart1: "About",
@@ -278,8 +277,7 @@ export const translations = {
             getDeal: "احصل على العرض",
             details: "التفاصيل",
             noDeals: "لا توجد عروض نشطة حالياً. تفقدنا قريباً!",
-            browseAll: "تصفح جميع الأدوات",
-            disclaimer: "قد تتضمن هذه العروض روابط تسويقية. نحن نعرض فقط المنتجات التي نوصي بها حقاً."
+            browseAll: "تصفح جميع الأدوات"
         },
         about: {
             titlePart1: "عن",
