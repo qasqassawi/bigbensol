@@ -57,12 +57,6 @@ export function DealsPage() {
           </a>
         </div>
       ` : ''}
-      
-      <div style="text-align: center; margin-top: var(--space-12); padding: var(--space-8); background: var(--bg-secondary); border-radius: var(--radius-2xl);">
-        <p style="color: var(--text-secondary);">
-          ℹ️ ${t('deals.disclaimer')}
-        </p>
-      </div>
     </div>
   `;
 }
